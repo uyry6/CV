@@ -1,0 +1,276 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Template: Curriculum Vitae
+%
+% Source: http://www.howtotex.com/
+% Feel free to distribute this template, but please keep the
+% referal to HowToTeX.com.
+% Date: July 2011
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[paper=a4,fontsize=11pt]{scrartcl} % KOMA-article class
+							
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{amsmath,amsfonts,amsthm}     % Math packages
+\usepackage{graphicx}                    % Enable pdflatex
+\usepackage[svgnames]{xcolor}            % Colors by their 'svgnames'
+\usepackage{geometry}
+	\textheight=700px                    % Saving trees ;-)
+\usepackage{url}
+
+\frenchspacing              % Better looking spacings after periods
+\pagestyle{empty}           % No pagenumbers/headers/footers
+
+%%% Custom sectioning (sectsty package)
+%%% ------------------------------------------------------------
+\usepackage{sectsty}
+
+\sectionfont{%			            % Change font of \section command
+	\usefont{OT1}{phv}{m}{n}%		% bch-b-n: CharterBT-Bold font
+	\sectionrule{0pt}{0pt}{-5pt}{0.5pt}}
+
+%%% Macros
+%%% ------------------------------------------------------------
+\definecolor{light-gray}{gray}{0.90}
+
+\newlength{\spacebox}
+\settowidth{\spacebox}{8888888888}			% Box to align text
+\newcommand{\sepspace}{\vspace*{1em}}		% Vertical space macro
+
+\newcommand{\MyName}[1]{ % Name
+		\Huge  \hfill #1
+		\par \normalsize \normalfont}
+		
+\newcommand{\MySlogan}[1]{ % Slogan (optional)
+		\large \usefont{OT1}{phv}{m}{n}\hfill \textit{#1}
+		\par \normalsize \normalfont}
+
+\newcommand{\NewPart}[1]{\section*{\uppercase{#1}}}
+
+\newcommand{\PersonalEntry}[2]{
+		\noindent\hangindent=2em\hangafter=0 % Indentation
+		\parbox{\spacebox}{        % Box to align text
+		\textit{#1}}		       % Entry name (birth, address, etc.)
+		\hspace{1.5em} #2 \par}    % Entry value
+
+\newcommand{\researchinterests}[1]{      % Same as \PersonalEntry
+		\noindent #1}			   % Entry name (birth, address, etc.)
+		    % Entry value	
+		
+\newcommand{\EducationEntry}[5]{
+		\noindent \textbf{#1} \hfill      % Study
+		\par  % Duration
+		\noindent\small \textit{#3} \par        % School
+		\noindent \normalsize #5 \par
+		\noindent \normalsize \texttt{#4} \hfill
+        \small\colorbox{light-gray}{%
+			\parbox{9.5em}{%
+			\hfill\color{Black}#2}} % Description
+		\normalsize \par
+		}
+		
+\newcommand{\Courses}[2]{
+		\noindent \textbf{#1} \hfill      % course  
+		\noindent \normalsize \hfill\texttt{#2}
+		% Duration GPA
+		\normalsize \par
+		}
+        
+\newcommand{\Scholarships}[4]{
+		\noindent \textbf{#1} \hfill      % Study
+		\par  % Duration
+		\noindent \normalsize \texttt{#3} \par        % money
+       
+        \noindent  \small\hangindent=2em\hangafter=0 #4\hfill
+        \colorbox{light-gray}{%
+			\parbox{4.3em}{%
+			\hfill\color{Black}#2}} % Description
+		\normalsize \par}
+        
+        
+\newcommand{\Conference}[4]{
+		\noindent \textbf{#1} \hfill      % Study
+        \noindent #3 \par
+		\noindent \textit{#4} \hfill      % con
+        \small\colorbox{light-gray}{%
+			\parbox{4.3em}{%
+			\hfill\color{Black}#2}} % Description
+		\normalsize \par}
+        
+\newcommand{\Research}[4]{
+		\noindent \textbf{#1} \par   
+        \noindent \textit{#3} \par% Study
+		\noindent \textit{#4} \hfill      % con
+        \small\colorbox{light-gray}{%
+			\parbox{10em}{%
+			\hfill\color{Black}#2}} % Description
+		\normalsize \par}
+        
+\newcommand{\Teaching}[4]{
+		\noindent \textbf{#1} \par   
+        \noindent \textit{#3} \par
+        \noindent \textit{#4}  \hfill      % con
+        \small\colorbox{light-gray}{%
+			\parbox{9.5em}{%
+			\hfill\color{Black}#2}} % Description
+		\normalsize \par}
+
+\newcommand{\WorkEntry}[4]{				  % Same as \EducationEntry
+		\noindent \textbf{#1} \hfill      % Jobname
+		\colorbox{Black}{\color{White}#2} \par  % Duration
+		\noindent \textit{#3} \par              % Company
+		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+		\normalsize \par}
+		
+\newcommand{\Reference}[3]{
+		\noindent\textbf{#1} \par   
+        \normalsize\noindent \textit{#2} \par
+        \normalsize\noindent{#3}  
+		\normalsize \par\hfill}
+
+%%% Begin Document
+%%% ------------------------------------------------------------
+\begin{document}
+% you can upload a photo and include it here...
+%\begin{wrapfigure}{l}{0.5\textwidth}
+%	\vspace*{-2em}
+%		\includegraphics[width=0.15\textwidth]{photo}
+%\end{wrapfigure}
+
+\MyName{Yuan-Ho Yao}
+\MySlogan{Curriculum Vitae}
+
+\sepspace
+
+%%% Personal details
+%%% ------------------------------------------------------------
+\NewPart{Personal details}{}
+
+%\PersonalEntry{Birth}{January 1, 1980}
+\PersonalEntry{Nationality}{Taiwan}
+\PersonalEntry{Address}{4F., No.8, Ln. 50, Tianmu E. Rd., Shilin Dist., 111 Taipei, Taiwan}
+\PersonalEntry{Phone}{(+886) 917356720, (+31) 616332959}
+\PersonalEntry{Email}{\url{uyry66@gmail.com}}
+\PersonalEntry{Languages}{Mandarin (mother tongue), Taiwanese (mother tongue),}
+\PersonalEntry{}{English (fluent)}
+
+%%% Education
+%%% ------------------------------------------------------------
+\NewPart{Education}{}
+
+\EducationEntry{MSc Master of Logic / Institute for Logic, Language and Computation}{Sep. 2017 - Feb. 2020\\(expected date)}{University of Amsterdam, The Netherlands}{GPA: TBD /10}{Thesis Title: \\Hybrid Quantum-Classical Models of Communication Complexity}
+
+\EducationEntry{MA Institute of Philosophy of Mind and Cognition}{Sep. 2013 - Jan. 2016}{National Yang-Ming University, Taiwan}{GPA: 4.0 /4.0}{Thesis Title: \\Context-Dependent Epistemic Logic: A Formal System}
+\sepspace
+
+\EducationEntry{BSc Department of Mathematics \&\\BSc Department of Atmospheric Sciences (Double Major)}{Sep. 2008 - Jan. 2013}{National Taiwan University, Taiwan}{GPA: 3.24/4.0}{}
+%%% RESEARCH INTERESTS
+%%% ------------------------------------------------------------
+\NewPart{RESEARCH INTERESTS}{}
+
+\researchinterests{Quantum Computation, (Quantum) Communication Complexity, Information Theory, Epistemic Logic}
+
+
+%%% Scholarships and Awards
+%%% ------------------------------------------------------------
+\NewPart{Scholarships and Awards}{}
+
+\Scholarships{Government Scholarships for Overseas Study (GSOS), Taiwan: \\Full Scholarships}{Dec. 2016}{FOUR YEARS FUNDING (EXPIRED) \\\$24000/PER YEAR - LIVING\\ \$30000/PER YEAR - TUITION}{Only one winner in philosophy field for the whole country}
+\sepspace
+
+\Scholarships{The Phi Tau Phi Scholastic Honor Society Membership, Taiwan}{May 2015}{}{Ranked No. 1 throughout graduate years}
+\sepspace
+
+\Scholarships{Scholarship of School of Humanities and Social Sciences, National Yang-Ming University, Taiwan}{Oct. 2014}{\$250}{Three winners out of 40-45 each year}
+
+%%% CONFERENCE PRESENTATIONS
+%%% ------------------------------------------------------------
+\NewPart{CONFERENCE PRESENTATIONS}{}
+
+\Conference{Context-Dependent Epistemic Logic}{Nov. 2015}{Oral Presentation}{7th Cross-Strait Logic Conference, Taipei, Taiwan}
+\sepspace
+\Conference{“The Surprise Test Paradox” and “The Knowability Paradox”}{Jul. 2014}{Poster}{EASLLC 2014, Beijing, China}
+%%% Research Experience
+%%% ------------------------------------------------------------
+\NewPart{Research Experience}{}
+\Research{Research Assistant}{Nov. 2019 - Present}{Department of Computer Science & Information Engineering, National Taiwan University}{with Dr. Tony Tan}
+\sepspace
+\Research{Research Assistant}{Jun. 2019 - Oct. 2019}{Institute of Information Science, Academia Sinica}{with Dr. Kai-Min Chung}
+\sepspace
+\Research{Research Assistant}{Mar. 2016 - Aug. 2017}{Institute of Information Science, Academia Sinica}{with Dr. Churn-Jung Liau}
+\sepspace
+\Research{Research Assistant}{Oct. 2013 - Jan. 2016}{Institute of Philosophy of Mind and Cognition, National Yang-Ming University}{with Prof. Wen-Fang Wang}
+
+%%% Teaching Experience
+%%% ------------------------------------------------------------
+\NewPart{Teaching Experience}{}
+
+\Teaching{Teaching Assistant - Logic}{Feb. 2014 - Jun. 2014}{Institute of Philosophy of Mind and Cognition, National Yang-Ming University}{with Prof. Wen-Fang Wang}
+\sepspace
+\Teaching{Teaching Assistant - Philosophy of Mind}{Sep. 2013 - Jan. 2014}{Institute of Philosophy of Mind and Cognition, National Yang-Ming University}{with Prof. Karen Yan}
+
+%%% Courses taken
+%---------
+
+\NewPart{Courses taken}{}
+
+\Courses{Research Project Master of Logic (Communication Complexity)}{AVV}
+\Courses{Term Rewriting Systems}{8,5}
+\Courses{Computational Complexity}{6,0}
+\Courses{Research Project Master of Logic (Quantum Cryptography)}{AVV}
+\Courses{Dynamic Epistemic Logic}{7,0}
+\Courses{Concurrency Theory}{7,5}
+\Courses{Research Project Master of Logic (Logic Programming: Haskell)}{AVV}
+\Courses{Basic Probability: Programming}{8,5}
+\Courses{Kolmogorov Complexity}{6,0}
+\Courses{Game Theory}{8,0}
+\Courses{Introduction to Modal Logic}{7,0}
+\Courses{Mathematical Structures in Logic}{8,0}
+\Courses{Information Theory}{7,0}
+\Courses{Research Project Master of Logic (Logic and Neural Network)}{AVV}
+\Courses{Topics in Modal Logic (Coalgebra)}{6,0}
+\Courses{Logic, Language and Computation}{AVV}
+
+
+\NewPart{References}{}
+
+\Reference{Dr. Stacey Jeffery (Supervisor)}{Centrum Wiskunde \& Informatica / QuSoft, The Netherlands}{\url{smjeffery@gmail}}
+
+\Reference{Dr. Christian Schaffner (Supervisor)}{Institute for Logic, Language and Computation / Centrum Wiskunde \& Informatica / QuSoft, The Netherlands}{\url{c.schaffner@uva.nl}}
+
+\Reference{Prof. Dr. Dick de Jong (Mentor)}{Institute for Logic, Language and Computation, The Netherlands}{\url{D.H.J.deJongh@uva.nl}}
+
+%%% Skills
+%%% ------------------------------------------------------------
+
+
+%\NewPart{Skills}{}
+
+%\SkillsEntry{Languages}{Dutch (mother tongue)}
+%\SkillsEntry{}{English (fluent)}
+%\SkillsEntry{}{German (fluent)}
+
+%\SkillsEntry{Software}{\textsc{Matlab}, \LaTeX, \textsc{Ansys}, \textsc{Comsol}}
+
+
+%%% References
+%%% ------------------------------------------------------------
+%\NewPart{References}{}
+%Available upon request
+\end{document}
